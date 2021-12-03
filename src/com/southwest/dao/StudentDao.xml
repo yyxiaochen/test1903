@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.southwest.dao.StudentDao">
+    <insert id="insert" >
+        insert into users(username,password) values (#{username},#{password})
+    </insert>
+    <select id="selectAll"  resultType="com.southwest.domain.Student">
+        select * from users
+    </select>
+    <delete id="delete">
+        delete from users where id = #{id}
+    </delete>
+<!--    传递多个参数ID，name时封装对象传参-->
+    <select id="selectOne" parameterType="com.southwest.domain.Student" resultType="com.southwest.domain.Student">
+        select * from users where userName=#{username} and password = #{password}
+    </select>
+</mapper>
